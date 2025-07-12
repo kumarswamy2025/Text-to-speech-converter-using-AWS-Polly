@@ -1,9 +1,15 @@
+import Header from "./components/Header";
+
+
+
+
 function App() {
   return (  
-    <>
-    <h1>this is kuamr </h1>
-    
-    </>
+    <div className="container">
+        <Header />
+
+        
+    </div>
   );
 }
 
