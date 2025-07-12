@@ -1,17 +1,16 @@
 import { useState } from "react";
 import Header from "./components/Header";
 import Section from "./components/Section";
-import AWS from 'aws-sdk';
-import {toast, Toaster} from 'react-hot-toast'; 
+import AWS from "aws-sdk";
+import { toast, Toaster } from "react-hot-toast";
+import AudioPlayer from "./components/AudioPlayer";
 
-// configuring aws polly 
+// configuring aws polly
 AWS.config.update({
-    accessKeyId: process.env.REACT_APP_CLIENTID,
-    secretAccessKey: process.env.REACT_APP_SECRETKEY,
-    region: process.env.REACT_APP_REGION
-})
-
-
+  accessKeyId: process.env.REACT_APP_CLIENTID,
+  secretAccessKey: process.env.REACT_APP_SECRETKEY,
+  region: process.env.REACT_APP_REGION,
+});
 
 // calling aws polly
 const polly = new AWS.Polly();
@@ -40,14 +39,18 @@ function App() {
     );
   };
   return (
-    <div className="container">
-      <Header />
-      <Section
-        text={text}
-        setText={setText}
-        convertTextToSpeech={convertTextToSpeech}
-      />
-    </div>
+    <>
+      <div className="container">
+        <Header />
+        <Section
+          text={text}
+          setText={setText}
+          convertTextToSpeech={convertTextToSpeech}
+        />
+      </div>
+      <Toaster position="top-right" reverseOrder={false} />
+      <AudioPlayer audioFile={audioFile} />
+    </>
   );
 }
 
