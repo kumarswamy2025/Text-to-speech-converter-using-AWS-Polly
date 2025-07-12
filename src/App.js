@@ -4,6 +4,15 @@ import Section from "./components/Section";
 import AWS from 'aws-sdk';
 import {toast, Toaster} from 'react-hot-toast'; 
 
+// configuring aws polly 
+AWS.config.update({
+    accessKeyId: process.env.REACT_APP_CLIENTID,
+    secretAccessKey: process.env.REACT_APP_SECRETKEY,
+    region: process.env.REACT_APP_REGION
+})
+
+
+
 // calling aws polly
 const polly = new AWS.Polly();
 function App() {
